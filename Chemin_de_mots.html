@@ -1,0 +1,80 @@
+<!DOCTYPE htlm>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Portfolio</title>
+        <link rel="stylesheet" href="portfolio.css">
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css">
+        <link rel="icon" type="image/x-icon" href="./src/img/favicon.ico">
+        <link class="logo" rel="icon" href="presentation/logo.png">
+    </head>
+    <body>
+        <header>
+            <article>
+                <img src="ma_tete.jpg">
+                <section>
+                    <h3>Camille</h3>
+                    <h3>GOYET</h3>
+                </section>
+            </article>
+            <h1>Portfolio</h1> 
+            <input type="checkbox" id="toggler"> 
+            <label for="toggler"><i style="font-size: 20px" class="icon icon-menu"></i></label>
+            <div class="nav" bis_skin_checked="1">
+                <ul >
+                    <li><a href="presentation.html">Présentation</a></li>
+                    <li><a class="active" href="projets.html">Projets</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </header>
+        <main class="SAE">
+            <a  href="projets.html"><i class="icon icon-arrow-left"> Revenir aux Projets</i></a>
+            <h1>Chemin de mots</h1>
+                <section>
+                <aside>
+                    <h3>Info</h3>
+                    <ul>
+                        <li>Projet Personnelles</li>
+                        <li>Python</li>
+                        <li>1 personnes</li>
+                        <li>juillet 2023</li>
+                        <li>1 semaine</li>
+                    </ul>
+                </aside>
+                    <article>
+                        <h3>Description</h3>
+                        <p>Dans le cadre de mon apprentissage en Python, j’ai réalisé un projet basé sur la recherche de chemins entre des mots en utilisant le principe des graphes.
+                             L’objectif du programme est de trouver un mot de quatre lettres en passant d’un mot à un autre, avec une contrainte précise :
+                              on ne peut se déplacer vers un nouveau mot que si une seule lettre est différente du mot précédent.
+Le fonctionnement repose sur la modélisation des mots sous forme de graphe. 
+Chaque mot représente un nœud, et une arête relie deux mots lorsqu’ils ne diffèrent que par une seule lettre. 
+À partir d’un mot de départ, le programme explore alors les différentes possibilités pour atteindre le mot cible en respectant cette règle.
+            <img src="./projet/chemin_mot2.png">
+</p>
+                        <h3>Organisation</h3>
+                        <p>Pour mettre en place ce projet, j’ai utilisé des structures de données adaptées comme les listes et les dictionnaires afin de représenter le graphe.
+                             J’ai également implémenté un algorithme de parcours, comme une recherche en largeur, pour trouver le chemin le plus court entre deux mots.</p>
+                        <h3>Compétences acquises</h3>
+                        <p>Ce premier programme fut mon premier projet informatique. Il me montra réellement les bases d'un projet et qu'il fallait avoir l'organisation et l'idée bien fixe en tête.</p>
+                             <h3>Acces au projets</h3>
+                        <article>
+                            <i><a href="projetcheminmotsansvisualisation.py">code du Chemin de Mots.py</a></i>
+                        </article>
+                        <h3>Conclusion</h3>
+                        <p>En conclusion, ce projet de recherche de chemins entre des mots m’a permis d’approfondir ma compréhension des graphes et des algorithmes de parcours en Python. 
+                            En modélisant les mots comme des nœuds reliés par des arêtes lorsqu’une seule lettre change, j’ai pu appliquer concrètement des notions théoriques comme la recherche en largeur pour trouver le chemin le plus court.
+Ce travail m’a aidé à développer ma logique, ma rigueur et ma capacité à structurer un programme plus complexe. Il m’a également permis de mieux comprendre l’importance du choix des structures de données et de l’optimisation des algorithmes. 
+Ce projet représente la première étape dans mon apprentissage, car il combine réflexion algorithmique et mise en pratique concrète.
+</p>
+                    </article>
+                </section>
+        </main>
+        <footer>
+            <h3>Suivez-moi</h3>
+            <p>Curieuse et déterminée, je progresse chaque jour pour concevoir des solutions innovantes.</p>
+            <a href="contact.html"><input type="submit" value="Contactez moi !" ></a>
+        </footer>
+    </body>
+</html>

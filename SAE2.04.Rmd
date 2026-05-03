@@ -1,0 +1,195 @@
+---
+pdf_document: default
+author: "Blachon Lysiane & Goyet Camille - D1 "
+title: "Etude des biscuits et des gâteaux aux Etat-Unis"
+output:
+  pdf_document: default
+word_document: default
+---
+  
+```{r enlever_les_messages, include=FALSE}
+# Cette partie permet d'enlever l'affichage des chunks R dans tout le reste du document
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE)
+```
+
+```{r chargement_librairies_et_données}
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(lubridate)
+library(stringr)
+library(data.table)
+library(kableExtra)
+library(tinytex)
+setwd('/users/info/pub/1a/S2.04/donnees_nettoyees/')
+mystere<- fread("goyetcam.csv", encoding="UTF-8")
+cols <- c("a" = "#008000",
+    "b" = "#8CC63F",
+    "c" = "#FFFF00",
+    "d" = "#FFA500",
+    "e" = "#FF0000")
+attach(mystere)
+View(mystere)
+```
+
+
+# Introduction :
+
+Dans cette étude, nous allons examiner et analyser des données nutritionnelles pour des aliments appartenant à une certaine catégorie. Ici, cette catégorie est celle des biscuits et des gâteaux aux États-Unis. 
+Cette base de données a été faite par le site Open Food Facts, où les produits sont scannés puis analysés afin de permettre aux consommateurs de connaître la qualité de l’aliment acheté. Certaines valeurs peuvent être faussées car le scan du produit peut être mal fait et la qualité altérée. C’est le cas notamment du produit « Cantuccini Morbidi », avec une teneur en sel de 72 grammes, ce qui est bien trop élevé pour un être humain. La véritable teneur en sel de ce produit est de 72 milligrammes.
+Pour commencer, nous réaliserons l’analyse de nos données en définissant le Nutri-score et ses différentes catégories. Puis, nous verrons l’exemple de quelques produits de l’étude. Enfin, nous passerons à une étude poussée, à l’aide de graphiques, montrant le rapport entre le Nutri-score et la catégorie « biscuits & cake » aux États-Unis.
+
+# Le Nutri-score : 
+
+Qu'est-ce que le Nutri-score ? 
+
+Le Nutri-score est un système d'étiquetage nutritionnel à cinq niveaux, allant de A à E et du vert au rouge, placé sur le devant des emballages alimentaires, établi en fonction de la valeur nutritionnelle d'un produit alimentaire. Il a pour but d'aider les consommateurs à reconnaître la qualité nutritionnelle globale des aliments et de les aider à comparer les aliments entre eux, afin de favoriser le choix de produits plus favorable à la santé et ainsi de participer à la lutte contre les maladies chroniques comme les maladies cardiovasculaires, certains cancers, l'obésité et le diabète. [Source de Wikipédia]
+
+
+# Présentation de quelques produits : 
+
+Parmi les 21 762 lignes de données que nous avons extraites de la base qui nous a été fournie, nous en avons choisi une par Nutri-score afin de pouvoir les analyser plus précisément et montrer sur quelles variétés de produits portent nos recherches. 
+Dans cette étude, nous travaillons seulement sur des produits dit « biscuits » ou « cake » provenant des États-Unis. Pour les Nutri-scores que nous allons présenter, nous nous intéresserons seulement à certaines valeurs nutritionnelles pour 100 grammes, comme le sucre, la matière grasse ou encore le sel.
+Tout d’abord, commençons par le Nutri-score A : nous avons pris le produit « Rosemary Crostini ». Son taux de matière grasse et de sucre est nul. Ce produit contient également 6.25 grammes de protéines et 1.25 grammes de sel. Il est également indiqué qu’il ne contient pas d’huile de palme.
+Ensuite, pour le Nutri-score B, nous avons pris le produit « Hummus with pretzels ». Ce produit contient 2.02 grammes de sucre, 9.09 grammes de matière grasse, 7.07 grammes de protéines et 1.59 grammes de sel. Quand nous observons ses valeurs nutritionnelles, nous pouvons remarquer qu’il contient un peu de matière grasse. Nous pouvons interpréter cela comme étant la faute de l’huile. Or, comme l’huile est plutôt saine pour la santé (à dose raisonnable), l’attribution de ce Nutri-score est donc justifiée.
+Puis, pour le Nutri-score C, nous avons pris le produit « Medford farms, stone ground wheat crackers, sesame ». Ce produit ne contient pas de sucre, mais a un taux de matière grasse et de protéines de 13.33 grammes. Il contient également 2.5 grammes de sel, ce qui fait de lui un produit peu sain.
+Pour continuer, nous avons pris le produit « Avocado crisps » ayant un Nutri-score D. Ce produit contient 3.33 grammes de sucre, un taux de matière grasse de 33.33 grammes, un taux de protéines de 16.66 grammes, et surtout, un taux de sel de 3.9 grammes, ce qui est bien trop élevé pour être dans un meilleur Nutri-score. Nous rappelons que la dose journalière de sel ne doit pas s’élever au delà de 5 grammes pour un aliment.
+Enfin, pour le Nutri-score E, nous avons pris le produit « Apple strudel ». Son placement dans la catégorie E est totalement justifié. En effet, la quantité de matière grasse reste à un seuil correct, avec 14.06 grammes, mais le taux de sucre est vraiment élevé avec 29.69 grammes. Ce produit contient aussi 3.91 grammes de protéines. Le taux de sel, lui, reste dans la norme avec 1.11 grammes.
+
+# Analyse des données :
+
+Après avoir compris ce qu’était le Nutri-score, nous allons nous intéresser maintenant au Nutri-score dans notre base de données. Nous allons donc l’analyser pour les biscuits et gâteaux fabriqués aux États-Unis.
+
+
+```{r}
+ggplot(mystere)+ geom_bar(aes(x=nutriscore_grade, y = ..count.. / sum(..count..),
+                                      fill = nutriscore_grade))+
+  scale_y_continuous(labels = scales::percent)+
+  scale_fill_manual(values= c(
+    "a" = "#008000",
+    "b" = "#8CC63F",
+    "c" = "#FFFF00",
+    "d" = "#FFA500",
+    "e" = "#FF0000"
+  ))+
+  labs(title="Graphique de la répartition des produits par Nutri-score",x="Nutri-score",
+       y="Pourcentage de produits")+
+  theme(legend.position = "none")
+```
+
+Sur ce graphique en barres, nous pouvons nous apercevoir que la base de données est majoritairement constituée de produits ayant un Nutri-score D et E. Nous savons que les États-Unis ne sont pas réputés pour faire attention à leur nourriture, notamment aux ingrédients la constituant. En parallèle, les biscuits et les gâteaux ne sont généralement pas réputés pour être des aliments très sains. Le commun des deux peut provoquer alors des Nutri-scores plus défavorables, comme nous pouvons le remarquer ici. Nous pouvons alors en déduire de façon générale que, même s' il y a des exceptions, comme le produit « Rosemary Crostini », les produits dits « biscuits » et « cake » en provenance des États-Unis sont moins bons pour la santé. Cela nous indique donc que ces desserts sont déconseillés et qu’il est recommandé d’y faire attention lors de leur consommation.
+
+# Pourquoi nos produits ont-ils majoritairement un Nutri-score D ou E ?
+
+Nous avons pu constater que la majorité de nos produits sont considérés comme des aliments peu sains. Pour expliquer pourquoi ce Nutri-score leur a été attribué, nous allons réaliser plusieurs graphiques et analyses permettant cela.
+
+
+
+```{r}
+distinct(mystere)%>%ggplot(aes(x =nutriscore_grade, y = fat_100g,fill = nutriscore_grade))+
+  scale_fill_manual(values= c(
+    "a" = "#008000",
+    "b" = "#8CC63F",
+    "c" = "#FFFF00",
+    "d" = "#FFA500",
+    "e" = "#FF0000"
+  )) +
+  geom_boxplot()+
+  labs(title="Graphique du Nutri-score en fonction des matières grasses",
+       x="Nutri-score",
+       y="Pourcentage de matière grasse")+	
+theme(legend.position = "none")
+```
+
+Ce graphique est un diagramme moustache qui représente la distribution du pourcentage de matière grasse en fonction des différentes catégories de Nutri-score. Les boîtes représentent, de bas en haut, le premier quartile, la médiane et le troisième quartile, tandis que les lignes et les points qui s'étendent au-delà, représentent la plage de données et les valeurs aberrantes. La couleur de chaque boîte correspond à un Nutri-score (vert pour A, jaune pour C, rouge pour E, etc.).
+Ce graphique permet une visualisation de la relation entre la teneur en matière grasse et le Nutri-score des produits alimentaires.
+Nous pouvons voir que plus le Nutri-score est mauvais, plus les boîtes et la médiane sont hautes.
+Les produits classés A et B ont généralement une faible teneur en matière grasse, avec une grande partie des données concentrée en dessous de 10%. Les produits classés C et D présentent une plus haute teneur en matière grasse, avec des médianes respectivement autour de 12% et 15%. De plus, le nombre de produits ayant une teneur en matière grasse élevée est plus important.
+Les produits classés E ont un pourcentage de matière grasse plus élevé, avec une médiane autour de 21%. De plus, la dispersion est très importante, avec de nombreux produits dépassant 40% de matière grasse, et quelques-uns atteignant même près de 60%. 
+Enfin les points isolés peuvent être des produits mal renseignés ou encore des exceptions, comme par exemple le produit « Sugar Cookies », qui a un taux de matière grasse de 64.3 grammes pour 100 grammes. 
+Nous savons que les matières grasses sont un composant important de l'alimentation, mais leur consommation excessive est associée à divers problèmes de santé.
+Grâce à ce graphique, nous en déduisons qu’il existe une corrélation entre la teneur en matière grasse et l’attribution du Nutri-score : plus le Nutri-score est mauvais, plus le pourcentage moyen de matière grasse dans le produit tend à être élevé.
+
+
+
+```{r}
+distinct(mystere)%>%ggplot(aes(x =nutriscore_grade, y =sugars_100g,fill = nutriscore_grade))+
+  scale_fill_manual(values= c(
+    "a" = "#008000",
+    "b" = "#8CC63F",
+    "c" = "#FFFF00",
+    "d" = "#FFA500",
+    "e" = "#FF0000"
+  )) +
+  geom_boxplot()+
+  labs(title="Graphique du Nutri-score en fonction du sucre",
+       x="Nutri-score",
+       y="Pourcentage de sucre")	+	
+theme(legend.position = "none")
+
+```
+
+Ce graphique est un diagramme moustache représentant la distribution du pourcentage de sucre en fonction des différentes catégories de Nutri-score.
+Nous pouvons voir que, plus le Nutri-score est mauvais, plus les boîtes et leur médiane sont hautes dans le graphique.
+Les produits classés A et B ont une teneur en sucre faible, avec une grande partie des données concentrée en dessous de 5%.
+Les produits classés C et D présentent une dispersion plus large de la teneur en sucre, avec des médianes respectivement autour de 13% et 25%.
+Les produits classés E ont, en moyenne, la teneur en sucre la plus élevée. De plus, la dispersion est très importante, avec de nombreux produits dépassant un taux de 60% de sucre.
+Nous savons que le sucre est un glucide essentiel dans notre alimentation, mais sa consommation excessive peut avoir d’autres effets néfastes sur la santé. De plus, le sucre est souvent retrouvé en quantité exagérée dans la plupart des biscuits et gâteaux.
+Nous en déduisons qu’il existe une corrélation entre la quantité de sucre et la classification d’un produit pour un Nutri-score : plus le Nutri-score est mauvais, plus le pourcentage moyen de sucre dans ce produit tend à être élevé.
+
+
+
+```{r}
+mystere%>%
+  ggplot(aes(x=fat_100g,y=sugars_100g,color = nutriscore_grade))+geom_point()+
+  scale_color_manual(values = c(
+    "a" = "#008000",
+    "b" = "#8CC63F",
+    "c" = "#FFFF00",
+    "d" = "#FFA500",
+    "e" = "#FF0000"
+  ))+
+  labs(title = "Graphique du rapport entre la matière grasse et le sucre par Nutri-score",x="Matiere grasse (pour 100g)",y="Sucre (pour 100g)",color="Nutri-score")
+```
+
+Ce graphique est un nuage de points représentant le pourcentage de sucre en fonction du pourcentage de matière grasse. Les différentes couleurs des points correspondent à leur catégorie de Nutri-score. Sur ce graphique, nous pouvons remarquer que les points sont regroupés par Nutri-score, malgré leur nombre très élevé.
+Comme nous l’avons observé dans les graphiques précédents, les produits ayant un Nutri-score A, B ou C contiennent, en moyenne, très peu de matière grasse et de sucre.
+Les produits classés D et E présentent la majorité de notre étude. Comme vu, la quantité importante de matière grasse et de sucre est très présente dans ces produits.
+Nous savons que les produits du type « biscuits » et « cake » sont connus pour leurs effets néfastes sur la santé à cause de leur quantité élevée en sucre et en matière grasse.
+Nous pouvons à présent clairement prouver, grâce à ces études, qu’il existe une relation entre le Nutri-score, le sucre et les matières grasses. Ces valeurs permettent de justifier l’attribution des Nutri-scores aux produits de notre base.
+
+
+```{r}
+library(ggridges)
+ggplot(mystere,aes(x = energy_100g, y = nutriscore_grade, fill = nutriscore_grade)) +
+  geom_density_ridges(scale=0.7,stat = "binline",bins =20) +
+  theme_ridges()+
+  scale_fill_manual(values = c(
+    "a" = "#008000",
+    "b" = "#8CC63F",
+    "c" = "#FFFF00",
+    "d" = "#FFA500",
+    "e" = "#FF0000"
+  ))+
+  theme(legend.position = "none")+labs(title = "Graphique des énergies par Nutri-score",x="Energie (pour 100g)",y="Nutri-score")
+
+```
+
+Ce graphique représente la distribution de la composition en énergie en fonction du Nutri-score. Chaque ligne permet de distinguer les 5 catégories de Nutri-score. Sur ce graphique, nous pouvons remarquer que les histogrammes sont différents.
+Pour les catégories de Nutri-score A, B et C, ils ont des valeurs s'étendant de 300 à 2200 kJ. Leur courbe est étalée et a un pique maximum culminant à 1700 kJ.
+Nous pouvons ainsi voir une différence avec les classifications D et E qui eux, ont une plage de données plus courte (entre 1000 à 2200 kJ).
+Nous savons que les produits de type « biscuits » et « cake » contiennent des sucres rapides, apportant de l'énergie sur le court terme. C’est pour cela que nous pouvons en déduire que les Nutri-scores D et E apportent majoritairement plus d'énergie car ils contiennent plus de sucre (ce qui a été montré précédemment).
+
+
+# Conclusion :
+
+Après toute cette étude, nous avons pu étudier le Nutri-score et les produits de la base de données. Nous pouvons conclure que les « biscuits » et les « cakes », bien que populaires, peuvent avoir des effets néfastes sur la santé s’ils sont consommés en excès. Les biscuits en particulier, peuvent être riches en sucre et en gras, ce qui peut contribuer à l’attribution d’un Nutri-score D ou E. Les « cakes », souvent faits avec des ingrédients transformés, peuvent également contenir du sucre et des matières grasses.
+Le Nutri-score est important pour savoir ce qui est le mieux à consommer. Même si ce n’est qu’une indication, il faut savoir faire la différence entre les produits. Par exemple, dans notre étude, une barre énergétique aura un Nutri-score plus élevé qu'un autre gâteau. Cependant, ces produits n'ont pas le même apport, ni le même effet sur le corps. 
+Pour conclure, ces produits restent donc à consommer avec modération, et il est fortement conseillé de faire attention aux étiquettes pour éviter une consommation excessive de mauvais sucre et de mauvaises graisses. 
+
+# Perspectives : 
+
+Notre étude était ciblée seulement sur les produits « cake » et « biscuits », provenant des États-Unis. Cette étude pourrait être élargie au niveau mondial pour vérifier s' il y a une différence prononcée de l’attribution des Nutri-score aux desserts. L'étude pourrait donc être approfondie en intégrant d’autres valeurs, comme les additifs et les conservateurs, qui causent plus d’effets néfastes pour le consommateur.

@@ -1,0 +1,77 @@
+<!DOCTYPE htlm>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Portfolio</title>
+        <link rel="stylesheet" href="portfolio.css">
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css">
+        <link rel="icon" type="image/x-icon" href="./src/img/favicon.ico">
+        <link class="logo" rel="icon" href="presentation/logo.png">
+    </head>
+    <body>
+        <header>
+            <article >
+                <img src="ma_tete.jpg">
+                <section>
+                    <h3>Camille</h3>
+                    <h3>GOYET</h3>
+                </section>
+            </article>
+            <h1>Portfolio</h1> 
+            <input type="checkbox" id="toggler"> 
+            <label for="toggler"><i style="font-size: 20px" class="icon icon-menu"></i></label>
+            <div class="nav" bis_skin_checked="1">
+                <ul >
+                    <li><a  href="presentation.html">Présentation</a></li>
+                    <li><a href="projets.html">Projets</a></li>
+                    <li><a class="active" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </header>
+        <main class="contact">
+            <h1>Me Contacter</h1>
+            <div>
+                <form>
+                    <h2>Formulaire </h2>
+                    <ul>
+                        <li><input type="text" name="Nom" placeholder="Votre nom" required></li>
+                        <li><input type="email" name="Mail" placeholder="Votre mail" required></li>
+                        <li><textarea name="Message" placeholder="Votre information / Votre demande" required></textarea></li>
+                        <li><input type="submit" value="Envoyez"></li>
+                    </ul>
+                </form>
+                <section>
+                    <h2>Mes Contacts</h2>
+                    <h3>Mon numero</h3>
+                    <article>
+                        <i class="icon icon-phone"> </i>
+                        <p> <a class="mecontacter" href="tel:+33 06 01 83 07 54">+33 06 01 83 07 54</a></p>
+                    </article>
+                    <h3>Mon adresse mail </h3>
+                    <article>
+                        <i class="icon icon-envelope"> </i>
+                        <p > <a class="mecontacter" href="mailto:camille.goyet@etu.univ-grenoble-alpes.fr">camille.goyet@etu.univ-grenoble-alpes.fr</a></p>
+                    </article>
+                    <h3>Mon adresse postale</h3>
+                    <article>
+                        <i class="icon icon-location-pin"> </i>
+                        <p> 3 allée des grands champs Bresson 38320</p>
+                    </article>
+                    <h3>Mes réseaux</h3>
+                    <article>
+                        <a href="https://www.linkedin.com/in/camille-goyet-5411b13a9/"><i class="icon icon-social-linkedin"></i></a>
+                        <p> <a  class="mecontacter" href="https://www.linkedin.com/in/camille-goyet-5411b13a9/">Mon linkedin</p></a>
+                        <a href="https://github.com/camgoy38"><i class="icon icon-social-github"></i></a>
+                        <p> <a  class="mecontacter" href="https://github.com/camgoy38">Mon github</p></a>
+                    </article>
+                </section>
+            </div>
+        </main>
+        <footer>
+            <h3>Suivez-moi</h3>
+            <p>Curieuse et déterminée, je progresse chaque jour pour concevoir des solutions innovantes.</p>
+            <a href="contact.html"><input type="submit" value="Contactez moi !" ></a>
+        </footer>
+    </body>
+</html>

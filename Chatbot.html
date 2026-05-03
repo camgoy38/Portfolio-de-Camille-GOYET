@@ -1,0 +1,87 @@
+<!DOCTYPE htlm>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Portfolio</title>
+        <link rel="stylesheet" href="portfolio.css">
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css">
+        <link rel="icon" type="image/x-icon" href="./src/img/favicon.ico">
+        <link class="logo" rel="icon" href="presentation/logo.png">
+    </head>
+    <body>
+        <header>
+            <article>
+                <img src="ma_tete.jpg">
+                <section>
+                    <h3>Camille</h3>
+                    <h3>GOYET</h3>
+                </section>
+            </article>
+            <h1>Portfolio</h1> 
+            <input type="checkbox" id="toggler"> 
+            <label for="toggler"><i style="font-size: 20px" class="icon icon-menu"></i></label>
+            <div class="nav" bis_skin_checked="1">
+                <ul >
+                    <li><a href="presentation.html">Présentation</a></li>
+                    <li><a class="active" href="projets.html">Projets</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </header>
+        <main class="SAE">
+            <a  href="projets.html"><i class="icon icon-arrow-left"> Revenir aux Projets</i></a>
+            <img src="./projet/sous-chatbot/chatbotprincipal.jpg">
+            <h1>Chatbot</h1>
+            <section>
+                <aside>
+                    <h3>Info</h3>
+                    <ul>
+                        <li>Projet Académiques</li>
+                        <li>JAVA</li>
+                        <li>2 personnes</li>
+                        <li>janvier 2025</li>
+                        <li>1 semaine</li>
+                    </ul>
+                </aside>
+                    <article class="chatbot">
+                        <h3>Description</h3>
+                        <p>Le projet de cette SAE consiste à développer un chatbot capable de simuler une conversation écrite avec un utilisateur. Ce programme répond à des questions de culture générale en utilisant des réponses stockées dans différents fichiers textes contenant les questions, les réponses et les erreurs de frappe possibles.
+
+Le chatbot analyse les questions de l’utilisateur en identifiant les mots importants afin de déterminer le thème et trouver la réponse la plus adaptée dans sa base de données. S’il ne connaît pas la réponse, l’utilisateur peut lui en apprendre une nouvelle, qui sera ajoutée à la base de données pour améliorer ses capacités.
+</p>
+<ul><li><img src="./projet/sous-chatbot/test1.png"></li>
+<li><img src="./projet/sous-chatbot/test2.png"></li>
+</ul>
+<p>
+Le chatbot peut également comprendre des questions courtes en se basant sur le contexte de la question précédente. De plus, il utilise un fichier de synonymes (thésaurus) pour reconnaître différentes variantes d’un même mot, ce qui lui permet de mieux interpréter les questions et d’optimiser ses réponses.
+</p>
+<h3>Organisation</h3>
+<p>
+	Pour réaliser ce projet, nous avons travaillé ensemble à toutes les étapes. Nous avons d’abord analysé les objectifs de la SAE ainsi que le code et les fichiers existants afin de comprendre le fonctionnement du chatbot. Ensuite, nous avons développé les différentes méthodes permettant de créer et gérer les index, de construire les réponses candidates et de les intégrer dans la classe Chatbot.
+
+La première partie du projet nous a demandé beaucoup de temps, notamment à cause de problèmes de cohérence entre certaines méthodes qui ont nécessité plusieurs phases de débogage. Dans la seconde partie, nous avons amélioré le chatbot en ajoutant la gestion des synonymes, la prise en compte du contexte des questions et la distinction entre certaines informations comme les dates et les lieux.
+
+Enfin, nous avons ajouté une fonctionnalité permettant à l’utilisateur d’enseigner de nouvelles réponses au chatbot. Ces connaissances sont désormais enregistrées dans les fichiers afin d’être conservées même après l’arrêt du programme.
+</p>
+                        <h3>Compétences acquises :</h3>
+                        <p>Au cours de ce travail, j’ai développé des compétences dans la compréhension plus pousser du fonctionnement d’un Chatbot. J’ai appris à communiquer, à m’organiser en équipe. J’ai appris à programmer en partant seulement d’instruction et à être consciencieuse.</p>
+                        <h3>Acces au projets</h3>
+                        <article>
+                        <i><a href="Rapport-SAE.012.pdf">Rapport écrit du projet Chatbot .pdf</a></i>
+                        </article>
+                        <h3>Conclusion</h3>
+                        <p>Nous avons réalisé tout le projet au complet. Ce programme peut alors interagir tout naturellement et au maximum avec l’utilisateur.
+                             Cependant, les limites et les problèmes de ce projet reste présent. Premièrement, l’utilisateur est le seul à remplir sa base de données, il peut la fausser. Il rend alors la base de données pourri. D’autre part, notre chatbot interagie selon que quelques formes. Il ne permet pas alors d’être optimal et adapter à chaque utilisateur. 
+                            Aussi comme tous les chatbots en général, le problème principal est une panne majeure qui est d’analyser l’historique des conversations.</p>
+                    </article>
+                </section>
+                <a  href="Base_de_données.html"><i class="icon icon-arrow-right"> Prochain Projet</i></a>
+        </main>
+        <footer>
+            <h3>Suivez-moi</h3>
+            <p>Curieuse et déterminée, je progresse chaque jour pour concevoir des solutions innovantes.</p>
+            <a href="contact.html"><input type="submit" value="Contactez moi !" ></a>
+        </footer>
+    </body>
+</html>

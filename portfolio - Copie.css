@@ -1,0 +1,405 @@
+:root{
+    --bleu-color:rgb(0, 194, 253);
+    --bleupastel-color:rgba(230, 232, 234, 0.811);
+    --bleufoncé-color:rgb(0, 0, 255);
+    --autrebleu-color:rgb(0, 0, 158);
+    --beige-color: rgba(250, 235, 215, 0.763);
+}
+html{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+body{
+    background-image: url("fond.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: top left;
+    height: 100vh;
+    margin: inherit;
+}
+main{
+    background-color: rgb(255, 255, 255);
+    margin: 130px;
+}
+main>h1{
+    padding-top: 10px;
+}
+/*NAV BAR*/
+
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color:var(--bleu-color) ;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+header>h1{
+    margin-left: 15%;
+}
+header>article{
+    display: flex;
+}
+header>article>img{
+    flex-direction: row;
+    clip-path: circle(50%);
+    width: 100px;
+    margin: 5px;
+}
+header>div>ul{
+    display: flex;
+    flex-direction: row;
+}
+header>div>ul>li{
+    padding: 20px;
+    list-style: none;
+}
+header>div>ul>li>a{
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+header div ul li:hover {
+    color: var(--bleufoncé-color);
+}
+#toggler,
+  label{
+    display: none;
+    color: inherit;
+}
+@media screen and (max-width: 750px) {
+    header{
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+        padding: 10px;
+    }
+    header>h1{
+        margin-left: 0px;
+    }
+    .nav {
+        justify-content: space-around;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    header>label {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+
+    }
+    header div ul:hover {
+        top: 1px;
+    }
+    #toggler:checked~.nav {
+        max-height: 100%;
+    }
+}
+
+/*FIN NAV BAR*/
+main>h1{
+    text-align: center;
+}
+/*PRESENTATION*/
+/*debut bouton cliquable*/
+.presentation p {
+  display: none;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: justify;
+}
+.toggle {
+  display: none;
+}
+.icon {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 15px;
+  color: black;
+}
+.icon:hover{
+    color:var(--bleufoncé-color);
+    font-size: 17px;
+    transition: 1s;
+}
+.toggle:checked + label + p {
+  display: block;
+}
+/*fin bouton cliquable*/
+.presentation p1{
+    padding: 5px;
+    text-align: justify;
+    line-height: 1.5;
+}
+.presentation h2{
+    padding-left: 10px;
+}
+.presentation li{
+    margin-bottom: 5px;
+}
+.presentation section{
+    padding-bottom: 10px;
+    width: 94%;
+    text-align: justify;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.presentation img{
+    width: 31%;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+@media screen and (max-width: 750px) {
+    .presentation h2{
+        font-size: 18px;
+        }
+    .presentation section{
+        margin-left: 3px;
+        width: 97%;
+    }
+}
+@media screen and (max-width: 800px) {
+    .presentation img{
+        width: 95%;
+    }
+}
+
+/*FIN PRESENTATION*/
+
+/*PROJETS*/
+
+.projets article{
+    border: 1px solid black;
+    border-radius: 30px;
+    position: relative;
+    flex-direction: row;
+    margin: 10px;
+    width: 300px;
+    height: 400px;
+    min-width: 300PX;
+}
+.projets p2{
+    position: absolute;
+    top: 182px;
+    left: 0px;
+    color: white;
+    background-color: var(--autrebleu-color);
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.projets p1{
+    position: absolute;
+    top: 182px;
+    right: 0px;
+    color: white;
+    background-color: var(--autrebleu-color);
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.projets h2{
+    margin-left: 10px;
+}
+.projets article>h3{
+    text-align: center;
+}
+.projets section{
+    display: flex;  
+    flex-wrap: wrap; 
+    justify-content: center;
+    background-color: white;
+}
+.projets article:hover{
+        box-shadow: var(--bleufoncé-color) 8px 8px;
+        transition: 1s;
+}
+.projets img{
+    width: 100%;
+    border-radius: 30px 30px 0px 0px;
+    border-bottom: 1px solid black;
+}
+.projets p{
+    margin: 5px;
+    text-align: justify;
+    position: absolute;
+    bottom: 30px;
+}
+.projets p3{
+    position: absolute;
+    bottom: 5px;
+    left: 70px;
+}
+.projets a{
+    text-decoration: none;
+    color: black;
+    padding-top: 240%;
+}
+.projets a:hover{
+    color: var(--bleufoncé-color);
+    transition: 1s;
+}
+@media screen and (max-width: 750px) {
+    main{
+        margin: auto;
+        margin-top: 250px;
+        width: 350px; 
+    }
+}
+
+/* Dans projet*/
+.SAE {
+    position: relative;
+}
+.SAE div{
+    display: flex;
+    flex-direction: row;
+}
+.SAE aside{
+    width: 20%;
+    background-color: var(--beige-color);
+    margin: 10px;
+    min-width: 155px;
+}
+.SAE article,p{
+    width: 100%;
+    margin-left: 5px ;
+}
+
+.SAE h3{
+    margin-left: 5px;
+}
+.SAE a{
+    position: absolute;
+    background-color: white;
+    padding: 5px;
+    margin: 0px;
+}
+@media screen and (max-width: 750px) {
+    .SAE div{
+    display: flex;
+    flex-direction: column;
+}
+    
+}
+/*Fin dans projet*/
+/*FIN PROJETS*/
+
+/*CONCTACT*/
+.contact main{
+    display: flex;
+}
+.contact div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.contact form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color:var(--beige-color);
+    margin: 20px;
+}
+.contact section:last-child{
+ background-color: var(--beige-color); 
+ margin: 20PX;
+ width: 50%;  
+}
+.contact h2{
+    text-align: center;
+}
+.contact form>ul{
+    list-style: none;
+    padding: 0px;
+}
+.contact input,textarea{
+    height: 30px;
+    width: 90%;
+    margin:10px 15px  10px 15px  ;
+    border-radius: 5px;
+    background-color: var(--bleupastel-color);
+    color: black;
+}
+.contact textarea{
+    height: 60px;
+}
+.contact article>h3{
+    margin-bottom: 8px;
+    margin-left: 5px;
+}
+.contact article>i,a{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+article>a{
+    text-decoration: none;
+    color: black;
+}
+@media screen and (max-width: 850px) {
+    .contact div{
+        flex-wrap: wrap;
+    }
+    .contact form{
+        width: 270px;
+    }
+    .contact section:last-child{
+        width: 270px;
+    }
+}
+/*FIN CONCTACT*/
+
+/*FOOTER*/
+footer{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bleu-color);
+    align-items: center;
+}
+footer>ul{
+    display: flex;
+    margin-top: 0px;
+}
+footer>ul>li>a{
+    flex-direction: row;
+    padding-right: 10px ;
+    color: inherit;
+    width: 15px;
+    text-decoration: none;
+}
+footer>ul>li{
+    list-style: none;
+    margin-right: 15px;
+    font-size: 20px;
+}
+footer>a>input{
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    background-color: var(--bleufoncé-color);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-family: italic;
+}
+footer ul li:hover {
+    transform: scale(1.5);
+    transition: 1s;
+}
+footer>a>input:hover{
+    transform: scale(1.3);
+    transition: 1s;
+}
+footer>p{
+    text-align: center;
+    font-family: italic;
+    margin-top: 0px;
+}
+
+/*FIN FOOTER*/
