@@ -289,6 +289,23 @@ main>h1{
 .presentation img:hover {
     transform: scale(1.03) translateY(-4px);
 }
+.cv article{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+.cv article>a{
+    width: 5%;
+}
+.cv article>img{
+    width: 5%; 
+}
+.cv article>a{
+    padding-top: 8px;
+    text-decoration: none;
+    color: black;
+    width: 100%;
+}
 @media screen and (max-width: 750px) {
     main {
         padding: 40px 24px;
