@@ -231,6 +231,7 @@ main>h1{
   border-left: 4px solid var(--primary-color);
   box-shadow: var(--shadow-sm);
   animation: expandDown 0.3s ease;
+    left: 13.5%;
 }
 .toggle {
   display: none;
