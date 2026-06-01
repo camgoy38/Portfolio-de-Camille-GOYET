@@ -59,7 +59,9 @@ main>h1{
     text-align: center;
 }
 @media screen and (min-width: 1333px){
-    left: 13.5%;
+    .projets{
+        left: 13.5%;
+    }
 }
 /*NAV BAR*/
 
