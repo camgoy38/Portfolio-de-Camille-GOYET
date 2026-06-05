@@ -572,6 +572,22 @@ main>h1{
 }
 /*fin chatbot*/
 
+/*MEGASAE*/
+.MégaSAE h5{
+    line-height: 0%;
+}
+.MégaSAE ol{
+     list-style-type: none;
+}
+.MégaSAE ol li::before  {
+  content: "• ";
+  color: var(--text-light);
+}
+.MégaSAE li{
+    color: var(--text-light);
+    width: 130%;
+}
+/*fin MEGASAE*/
 
 /*CONCTACT*/
 .contact main{
