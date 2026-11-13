@@ -464,6 +464,8 @@ main>h1{
     box-shadow: 0 6px 16px rgba(99, 102, 241, 0.3);
     border-color: var(--primary-color);
 }
+.annee:hover{
+    color: var(--primary-color) ;
 @media screen and (max-width: 750px) {
     main{
         margin: 200px 20px 40px;
