@@ -440,9 +440,6 @@ main>h1{
     margin: 0 24px 24px;
     text-align: center;
 }
-.annee:hover{
-    color: var(--primary-color) ;
-}
 .projets a{
     text-decoration: none;
     color: var(--primary-color);
@@ -466,6 +463,13 @@ main>h1{
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(99, 102, 241, 0.3);
     border-color: var(--primary-color);
+}
+.annee:hover{
+    color: var(--primary-color) !important;
+    background:  rgba(99, 102, 241, 0.08)!important;
+    transform: none !important;
+    box-shadow: none !important;
+    border-color : white !important;
 }
 @media screen and (max-width: 750px) {
     main{
