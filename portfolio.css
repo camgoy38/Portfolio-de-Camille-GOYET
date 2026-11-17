@@ -440,6 +440,9 @@ main>h1{
     margin: 0 24px 24px;
     text-align: center;
 }
+.annee:hover{
+    color: var(--primary-color) ;
+}
 .projets a{
     text-decoration: none;
     color: var(--primary-color);
@@ -456,9 +459,6 @@ main>h1{
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     width: 100%;
     border: 1px solid transparent;
-}
-.annee:hover{
-    color: var(--primary-color) ;
 }
 .projets a:hover{
     background: var(--gradient-card);
